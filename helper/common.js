@@ -10,6 +10,21 @@ var modelCache = {};
 exports.emptyFunc = function() {};
 
 /**
+ * get ip (nginx and cloudflare forward included.)
+ * @param req
+ * @returns String
+ */
+exports.getIp = function(req) {
+    if(req.headers["cf-connecting-ip"]) {
+        return req.headers["cf-connecting-ip"];
+    } else if(req.headers["x-real-ip"]) {
+        return req.headers["x-real-ip"];
+    } else {
+        return req.ip;
+    }
+};
+
+/**
  * alert
  * @param msg
  * @param url

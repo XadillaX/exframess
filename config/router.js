@@ -4,7 +4,6 @@
 var util = require("util");
 var path = require("path");
 var helper = require("../helper");
-var commonController = helper.common.getController("common");
 
 /**
  * initializing the router
@@ -15,6 +14,7 @@ var commonController = helper.common.getController("common");
  * @param callback
  */
 exports.initializeRouter = function(app, logger, callback) {
+    var commonController = helper.common.getController("common");
     var dirname = path.normalize(__dirname + "/../router/");
 
     var walk = require("walk");
